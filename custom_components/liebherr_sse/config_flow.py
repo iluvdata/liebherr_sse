@@ -58,7 +58,7 @@ class OptionsFlowHandler(OptionsFlowWithReload):
                 ),
             },
         }
-        OPTIONS_SCHEMA: probatio.Schema = probatio.Schema(
+        options_schema = probatio.Schema(
             {
                 probatio.Required(LIGHT_SECTION): section(
                     probatio.Schema(
@@ -74,7 +74,7 @@ class OptionsFlowHandler(OptionsFlowWithReload):
         return self.async_show_form(
             step_id="init",
             data_schema=self.add_suggested_values_to_schema(
-                OPTIONS_SCHEMA, suggested_values
+                options_schema, suggested_values
             ),
             errors=errors,
         )

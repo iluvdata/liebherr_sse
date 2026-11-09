@@ -3,7 +3,6 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 import logging
-from typing import Any
 
 from pyliebherr import LiebherrAPI, LiebherrDevice
 from pyliebherr.exception import (
@@ -120,33 +119,6 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: LiebherrConfigEnt
         PLATFORMS.add(Platform.LIGHT)
 
     await hass.config_entries.async_forward_entry_setups(config_entry, PLATFORMS)
-
-    return True
-
-
-async def async_migrate_entry(hass: HomeAssistant, config_entry: LiebherrConfigEntry):
-    """Migrate old entry to newer version."""
-
-    if config_entry.version == 1:
-        if config_entry.minor_version < 2:
-            # No longer using options for interval, since reverted
-            hass.config_entries.async_update_entry(
-                config_entry, options={}, minor_version=2, version=1
-            )
-        if config_entry.minor_version < 3:
-            # Add presentation_light_as_select option defaulting to False
-            options: dict[str, Any] = config_entry.options.copy()
-            options[CONF_PRESENTATION_LIGHT_AS_NUMBER] = False
-            hass.config_entries.async_update_entry(
-                config_entry, options=options, minor_version=3, version=1
-            )
-        if config_entry.minor_version < 4:
-            # Remove poll interval option
-            options: dict[str, Any] = config_entry.options.copy()
-            options.pop("poll_interval", None)
-            hass.config_entries.async_update_entry(
-                config_entry, options=options, minor_version=4, version=1
-            )
 
     return True
 
