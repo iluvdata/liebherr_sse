@@ -1,0 +1,142 @@
+{
+  "title": "Liebherr SmartDevice",
+  "common": {
+    "top": "oben",
+    "middle": "Mitte",
+    "bottom": "unten"
+  },
+  "config": {
+    "step": {
+      "user": {
+        "description": "Verbinden Sie Ihr Gerät mit Hilfe der **SmartDevice App** mit dem WLAN in Ihrem Heimnetzwerk.\n\n**1. App [herunterladen]({url_download_app})**\n**2. Folgen Sie den [Anweisungen]({url_connect_instructions}) und verbinden Sie Ihr Gerät**\n**3. Erzeugen Sie den HomeAPI-Schlüssel in der SmartDevice App**\n\nÖffnen Sie die *Einstellungen* der SmartDevice App und wählen Sie **“Werden Sie Betatester”**, dann aktivieren Sie die HomeAPI.\n\nKopieren Sie den HomeAPI-Schlüssel und fügen Sie ihn unten ein.\n\nDer HomeAPI-Schlüssel kann nur **einmal** kopiert werden. Er kann nicht erneut angezeigt werden, wenn Sie die Ansicht verlassen haben.\n\nFalls Sie den HomeAPI-Schlüssel vergessen haben sollten, können Sie in der App einen neuen Schlüssel erzeugen.",
+        "data": {
+          "api_key": "HomeAPI-Schlüssel aus der SmartDevice App"
+        }
+      }
+    },
+    "error": {
+      "auth_error": "API-Schlüssel ist nicht autorisiert oder ungültig.",
+      "whitespace_api_key": "Vor oder nach dem API-Schlüssel befindet sich ein Leerzeichen."
+    },
+    "abort": {
+      "already_configured": "HomeAPI-Schlüssel bereits konfiguriert.",
+      "invalid_source": "Eine ungültige Quelle wurde angegeben. Sehen Sie im Fehlerprotokoll nach.",
+      "reauth_successful": "Neuauthentifizierung erfolgreich."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Liebherr Optionen",
+        "sections": {
+          "presentation_light_options": {
+            "name": "Präsentationslicht Optionen",
+            "data": {
+              "presentation_light_as_number": "Präsentationslicht-Steuerung (falls vorhanden) als Zahlen-Entität (Schieberegler) anstelle einer Licht-Entität verwenden?"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "config_entry": {
+      "message": "Fehler beim Einrichten von Liebherr: {msg}"
+    },
+    "first_sse_timeout": {
+      "message": "Keine rechtzeitige Antwort von der Liebherr-API erhalten"
+    },
+    "sse_error": {
+      "message": "API connection error, failed after {attempt} reattempts"
+    }
+  },
+  "entity": {
+    "select": {
+      "icemaker": {
+        "name": "IceMaker{zone}",
+        "state": {
+          "on": "Ein",
+          "off": "Aus",
+          "max_ice": "MaxIce"
+        }
+      },
+      "biofreshplus": {
+        "name": "BioFreshPlus",
+        "state": {
+          "zero_zero": "0/0",
+          "zero_minus_two": "0/-2",
+          "minus_two_minus_two": "-2/-2",
+          "minus_two_zero": "-2/0"
+        }
+      }
+    },
+    "number": {
+      "presentationlight": {
+        "name": "Präsentationslicht"
+      }
+    },
+    "switch": {
+      "supercool": {
+        "name": "SuperCool{zone}"
+      },
+      "superfrost": {
+        "name": "SuperFrost{zone}"
+      },
+      "partymode": {
+        "name": "PartyMode"
+      },
+      "nightmode": {
+        "name": "NightMode"
+      }
+    },
+    "light": {
+      "presentationlight": {
+        "name": "Präsentationslicht"
+      }
+    },
+    "fan": {
+      "hydrobreeze": {
+        "name": "HydroBreeze"
+      }
+    },
+    "cover": {
+      "autodoor": {
+        "name": "AutoDoor{zone}"
+      }
+    },
+    "image": {
+      "device_image": {
+        "name": "Geräteabbildung"
+      }
+    },
+    "climate": {
+      "fridge": {
+        "name": "Kühlteil{zone}",
+        "state": {
+          "cool": "Kühlen"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Aktivierte Temperaturstufen"
+          }
+        }
+      },
+      "freezer": {
+        "name": "Gefrierteil{zone}",
+        "state": {
+          "cool": "Gefrieren"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Aktivierte Temperaturstufen"
+          }
+        }
+      }
+    },
+    "sensor": {
+      "updated": {
+        "name": "Zuletzt aktualisiert"
+      }
+    }
+  }
+}

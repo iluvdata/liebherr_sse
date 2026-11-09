@@ -1,0 +1,85 @@
+"""Support for Liebherr HydroBreeze."""
+
+import math
+from typing import Any
+
+from pyliebherr import LiebherrControlKey, LiebherrDevice
+from pyliebherr.const import ControlType
+from pyliebherr.models import PresentationLightControlRequest
+
+from homeassistant.components.light import ATTR_BRIGHTNESS, ColorMode, LightEntity
+from homeassistant.core import HomeAssistant, callback
+from homeassistant.util.color import brightness_to_value, value_to_brightness
+
+from . import LiebherrConfigEntry
+from .entity import LiebherrEntity, base_async_setup_entry
+
+
+async def async_setup_entry(
+    hass: HomeAssistant, config_entry: LiebherrConfigEntry, async_add_entities
+):
+    """Set up Liebherr light from a config entry."""
+    await base_async_setup_entry(
+        config_entry, async_add_entities, LiebherrLight, ControlType.PRESENTATION_LIGHT
+    )
+
+
+class LiebherrLight(LiebherrEntity, LightEntity):
+    """Representation of a Liebherr switch entity."""
+
+    def __init__(
+        self,
+        config_entry: LiebherrConfigEntry,
+        device: LiebherrDevice,
+        control_key: LiebherrControlKey,
+    ) -> None:
+        """Initialize the switch entity."""
+        super().__init__(config_entry, device, control_key)
+        self._attr_icon = "mdi:lightbulb"
+        self._attr_supported_color_modes = {ColorMode.BRIGHTNESS}
+        self.brightness_scale: tuple[int, int] = (1, self.control.max or 4)
+        self._set_brightness()
+
+    def _set_brightness(self) -> None:
+        if self.control.target is not None and self.control.target > 0:
+            self._attr_brightness = self._attr_brightness = value_to_brightness(
+                self.brightness_scale, self.control.target
+            )
+
+    @callback
+    def _async_write_ha_state(self):
+        self._set_brightness()
+        return super()._async_write_ha_state()
+
+    @property
+    def is_on(self) -> bool:
+        """Light on attribute."""
+        return self.control.target is not None and self.control.target > 0
+
+    async def async_turn_on(
+        self,
+        **kwargs: Any,
+    ) -> None:
+        """Turn the light on."""
+
+        # turn on via switch brightness not so will try to set to previous brightness
+        # a brightness of zero won't turn on the light so turn on to max brightness
+        brightness: int = kwargs[ATTR_BRIGHTNESS] or self._attr_brightness or 255
+
+        self.control.target = math.ceil(
+            brightness_to_value(self.brightness_scale, brightness)
+        )
+        await self.async_set_value(
+            control=PresentationLightControlRequest(target=self.control.target),
+        )
+
+        self._attr_brightness = brightness
+        self.async_write_ha_state()
+
+    async def async_turn_off(self, **kwargs):
+        """Turn the light off."""
+        self.control.target = 0
+        await self.async_set_value(
+            control=PresentationLightControlRequest(target=0),
+        )
+        self.async_write_ha_state()

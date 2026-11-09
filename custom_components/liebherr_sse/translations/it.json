@@ -1,0 +1,137 @@
+{
+  "title": "Liebherr",
+  "common": {
+    "top": "Superiore",
+    "middle": "Mezzo",
+    "bottom": "Inferiore"
+  },
+  "config": {
+    "step": {
+      "user": {
+        "description": "Collega il tuo elettrodomestico alla rete WiFi domestica tramite l'app **SmartDevice**.\n\n**1. [Scarica]({url_download_app}) l'app**\n**2. Segui le [istruzioni]({url_connect_instructions}) per collegare il tuo elettrodomestico**\n**3. Ottieni la tua chiave HomeAPI tramite l'app SmartDevice**\n\nVai su *Impostazioni* nell'app SmartDevice e seleziona **“Funzionalità beta”**, poi attiva HomeAPI.\n\nCopia la chiave HomeAPI e incollala qui sotto. La chiave HomeAPI può essere copiata **solo una volta**.\n\nNon appena lasci la schermata, il codice **non potrà più** essere copiato.\n\nSe hai dimenticato la tua chiave, devi crearne una nuova tramite l'app.",
+        "data": {
+          "api_key": "Chiave HomeAPI dall'app SmartDevice"
+        }
+      }
+    },
+    "error": {
+      "auth_error": "Chiave HomeAPI non autorizzata o non valida.",
+      "whitespace_api_key": "Sono presenti spazi prima o dopo la chiave HomeAPI."
+    },
+    "abort": {
+      "already_configured": "Chiave HomeAPI già configurata.",
+      "invalid_source": "È stata specificata una fonte di flusso non valida, questo non dovrebbe mai accadere (vedi i log).",
+      "reauth_successful": "Riautenticazione riuscita."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opzioni Liebherr",
+        "sections": {
+          "presentation_light_options": {
+            "name": "Opzioni illuminazione di presentazione",
+            "data": {
+              "presentation_light_as_number": "Utilizzare un'entità di tipo numero (cursore) al posto di un'entità di tipo luce per controllare l'illuminazione di presentazione (se possibile)?"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "config_entry": {
+      "message": "Errore durante la configurazione di Liebherr: {msg}"
+    },
+    "first_sse_timeout": {
+      "message": "Non è stata ricevuta alcuna risposta dall'API di Liebherr nel tempo previsto"
+    },
+    "sse_error": {
+      "message": "API connection error, failed after {attempt} reattempts"
+    }
+  },
+  "entity": {
+    "select": {
+      "icemaker": {
+        "name": "Macchina per il Ghiaccio{zone}",
+        "state": {
+          "on": "Acceso",
+          "off": "Spento",
+          "max_ice": "Ghiaccio Massimo"
+        }
+      },
+      "biofreshplus": {
+        "name": "BioFreshPlus",
+        "state": {
+          "zero_zero": "0/0",
+          "zero_minus_two": "0/-2",
+          "minus_two_minus_two": "-2/-2",
+          "minus_two_zero": "-2/0"
+        }
+      }
+    },
+    "switch": {
+      "supercool": {
+        "name": "SuperCool{zone}"
+      },
+      "superfrost": {
+        "name": "SuperFrost{zone}"
+      },
+      "partymode": {
+        "name": "PartyMode"
+      },
+      "nightmode": {
+        "name": "NightMode"
+      }
+    },
+    "number": {
+      "presentationlight": {
+        "name": "Illuminazione di presentazione"
+      }
+    },
+    "light": {
+      "presentationlight": {
+        "name": "Illuminazione di presentazione"
+      }
+    },
+    "fan": {
+      "hydrobreeze": {
+        "name": "HydroBreeze"
+      }
+    },
+    "cover": {
+      "autodoor": {
+        "name": "AutoDoor{zone}"
+      }
+    },
+    "image": {
+      "device_image": {
+        "name": "Immagine del dispositivo"
+      }
+    },
+    "climate": {
+      "fridge": {
+        "name": "Frigorifero{zone}",
+        "state": {
+          "cool": "Raffreddamento"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Passaggi di temperatura abilitati"
+          }
+        }
+      },
+      "freezer": {
+        "name": "Congelatore{zone}",
+        "state": {
+          "cool": "Congelamento"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Passaggi di temperatura abilitati"
+          }
+        }
+      }
+    }
+  }
+}

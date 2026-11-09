@@ -1,0 +1,142 @@
+{
+  "title": "Liebherr",
+  "common": {
+    "top": "Upper",
+    "middle": "Middle",
+    "bottom": "Lower"
+  },
+  "config": {
+    "step": {
+      "user": {
+        "description": "Connect your appliance via the **SmartDevice app** to your home WiFi network.\n\n**1. [Download]({url_download_app}) the app**\n**2. Follow the [instructions]({url_connect_instructions}) to connect your appliance**\n**3. Get your API Key via the SmartDevice app**\n\nGo to *Settings* in the SmartDevice app and select **“Beta features”**, then activate the HomeAPI.\n\nCopy the API Key and paste it below. The API Key can only be copied **once**.\n\nAs soon as you leave the screen, the code **cannot** be copied again.\n\nIf you forgot your key, you need to create a new one via the app.",
+        "data": {
+          "api_key": "API Key from the SmartDevice App"
+        }
+      }
+    },
+    "error": {
+      "auth_error": "API Key is unauthorized or invalid.",
+      "whitespace_api_key": "There is whitespace before or after the api key."
+    },
+    "abort": {
+      "already_configured": "API Key already configured.",
+      "invalid_source": "An invalid flow source was specified, this should never happen (see logs).",
+      "reauth_successful": "Reauthentication successful."
+    }
+  },
+  "exceptions": {
+    "config_entry": {
+      "message": "Error setting up Liebherr: {msg}"
+    },
+    "first_sse_timeout": {
+      "message": "Did not receive response from Liebherr API in time"
+    },
+    "sse_error": {
+      "message": "API connection error, failed after {attempt} reattempts"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Liebherr Options",
+        "sections": {
+          "presentation_light_options": {
+            "name": "Presentation Light Options",
+            "data": {
+              "presentation_light_as_number": "Use a number entity (slider) instead of a light entity for Presentation Light control (if applicable)?"
+            }
+          }
+        }
+      }
+    }
+  },
+  "entity": {
+    "select": {
+      "icemaker": {
+        "name": "Ice Maker{zone}",
+        "state": {
+          "on": "On",
+          "off": "Off",
+          "max_ice": "Max Ice"
+        }
+      },
+      "biofreshplus": {
+        "name": "BioFreshPlus",
+        "state": {
+          "zero_zero": "0/0",
+          "zero_minus_two": "0/-2",
+          "minus_two_minus_two": "-2/-2",
+          "minus_two_zero": "-2/0"
+        }
+      }
+    },
+    "number": {
+      "presentationlight": {
+        "name": "Presentation Light"
+      }
+    },
+    "switch": {
+      "supercool": {
+        "name": "SuperCool{zone}"
+      },
+      "superfrost": {
+        "name": "SuperFrost{zone}"
+      },
+      "partymode": {
+        "name": "Party Mode"
+      },
+      "nightmode": {
+        "name": "Night Mode"
+      }
+    },
+    "light": {
+      "presentationlight": {
+        "name": "Presentation Light"
+      }
+    },
+    "fan": {
+      "hydrobreeze": {
+        "name": "HydroBreeze"
+      }
+    },
+    "cover": {
+      "autodoor": {
+        "name": "AutoDoor{zone}"
+      }
+    },
+    "image": {
+      "device_image": {
+        "name": "Device Image"
+      }
+    },
+    "climate": {
+      "fridge": {
+        "name": "Refridgerator{zone}",
+        "state": {
+          "cool": "Chill"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Enabled Temperature Steps"
+          }
+        }
+      },
+      "freezer": {
+        "name": "Freezer{zone}",
+        "state": {
+          "cool": "Freeze"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Enabled Temperature Steps"
+          }
+        }
+      }
+    },
+    "sensor": {
+      "updated": {
+        "name": "Last Updated"
+      }
+    }
+  }
+}

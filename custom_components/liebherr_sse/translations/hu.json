@@ -1,0 +1,142 @@
+{
+  "title": "Liebherr",
+  "common": {
+    "top": "Felső",
+    "middle": "Középső",
+    "bottom": "Alsó"
+  },
+  "config": {
+    "step": {
+      "user": {
+        "description": "Csatlakoztassa a berendezését a **SmartDevice app** használatával az otthoni WiFi hálózatra.\n\n**1. Töltse le az [applikációt]({url_download_app})**\n**2. Kövesse az [utasításokat]({url_connect_instructions}) a berendezés csatlakoztatásához**\n**3. Szerezze meg az API Key-t a SmartDevice app-ban**\n\nMenjen a *Beállítások*-ba a SmartDevice app-ban és válassza ki a **“Beta features”**-t, ahol aktiválja a HomeAPI-t.\n\nMásolja le az API Key-t és illessze be lejjebb. Az API Key-t csak **egyszer** lehet kimásolni.\n\nAhogy elagyja a képernyőt, az API Key-hez **nem lehet** még egyszer hozzáférni.\n\nHa elfelejtette az API Key-t, újat kell létrehozni.",
+        "data": {
+          "api_key": "API Key a SmartDevice App-ból"
+        }
+      }
+    },
+    "error": {
+      "auth_error": "Az API Key nincs engedélyezve vagy érvénytelen.",
+      "whitespace_api_key": "Szünet került az API key elé vagy mögé."
+    },
+    "abort": {
+      "already_configured": "Már konfigurált API Key.",
+      "invalid_source": "Érvénytelen folyamat forrás: soha nem fordulhat elő (nekitse meg a naplót).",
+      "reauth_successful": "Sikeres újrahitelesítés."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Liebherr Beállítások",
+        "sections": {
+          "presentation_light_options": {
+            "name": "JelzőFény Beállítások",
+            "data": {
+              "presentation_light_as_number": "Használjon csúszkát sima kapcsoló helyett a JelzőFény vezérlésére (amennyiben alkalmazható)?"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "config_entry": {
+      "message": "Hiba történt a Liebherr beállítása során: {msg}"
+    },
+    "first_sse_timeout": {
+      "message": "Nem érkezett válasz a Liebherr API-tól időben"
+    },
+    "sse_error": {
+      "message": "API connection error, failed after {attempt} reattempts"
+    }
+  },
+  "entity": {
+    "select": {
+      "icemaker": {
+        "name": "Jég Készítő{zone}",
+        "state": {
+          "on": "Be",
+          "off": "Ki",
+          "max_ice": "Max Jég"
+        }
+      },
+      "biofreshplus": {
+        "name": "BioFrissPlussz",
+        "state": {
+          "zero_zero": "0/0",
+          "zero_minus_two": "0/-2",
+          "minus_two_minus_two": "-2/-2",
+          "minus_two_zero": "-2/0"
+        }
+      }
+    },
+    "number": {
+      "presentationlight": {
+        "name": "JelzőFény"
+      }
+    },
+    "switch": {
+      "supercool": {
+        "name": "SzuperHűtés{zone}"
+      },
+      "superfrost": {
+        "name": "SzuperFagyasztás{zone}"
+      },
+      "partymode": {
+        "name": "Parti Mód"
+      },
+      "nightmode": {
+        "name": "Éjszakai Mód"
+      }
+    },
+    "light": {
+      "presentationlight": {
+        "name": "JelzőFény"
+      }
+    },
+    "fan": {
+      "hydrobreeze": {
+        "name": "HydroBreeze"
+      }
+    },
+    "cover": {
+      "autodoor": {
+        "name": "AutoDoor{zone}"
+      }
+    },
+    "image": {
+      "device_image": {
+        "name": "Berendzés Ábra"
+      }
+    },
+    "climate": {
+      "fridge": {
+        "name": "Hűtő{zone}",
+        "state": {
+          "cool": "Hűtés"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Engedélyezett hőmérséklet lépések"
+          }
+        }
+      },
+      "freezer": {
+        "name": "Fagyasztó{zone}",
+        "state": {
+          "cool": "Fagyasztás"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Engedélyezett hőmérséklet lépések"
+          }
+        }
+      }
+    },
+    "sensor": {
+      "updated": {
+        "name": "Utolsó frissítés"
+      }
+    }
+  }
+}

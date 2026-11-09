@@ -1,0 +1,142 @@
+{
+  "title": "Liebherr",
+  "config": {
+    "step": {
+      "user": {
+        "description": "Conecta tu electrodoméstico a la red WiFi de tu hogar mediante la aplicación **SmartDevice**.\n\n**1. [Descarga]({url_download_app}) la aplicación**\n**2. Sigue las [instrucciones]({url_connect_instructions}) para conectar tu dispositivo**\n**3. Obtén tu clave API a través de la aplicación SmartDevice**\n\nVe a *Ajustes* en la aplicación SmartDevice y selecciona **“Funciones beta”**, luego activa HomeAPI.\n\nCopia la clave API y pégala abajo. La clave solo se puede copiar **una sola vez**.\n\nUna vez que abandones la pantalla, el código **no podrá** ser copiado de nuevo.\n\nSi has olvidado la clave, deberás generar una nueva desde la aplicación.",
+        "data": {
+          "api_key": "Clavo API a través de la aplicación SmartDevice."
+        }
+      }
+    },
+    "error": {
+      "auth_error": "Clavo API no autorizado o inválido.",
+      "whitespace_api_key": "Hay espacio en blanco antes o detras del Clavo API."
+    },
+    "abort": {
+      "already_configured": "Clavo API ya configurada.",
+      "invalid_source": "Se especificó una fuente de flujo no válida, esto nunca debería suceder (ver registros).",
+      "reauth_successful": "Reautenticación exitosa."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciones de Liebherr",
+        "sections": {
+          "presentation_light_options": {
+            "name": "Opciones de Presentation Light",
+            "data": {
+              "presentation_light_as_select": "¿Usar un entidat númerico (control deslizante) en lugar de una entidad de luz para el control de Presentation Light (si corresponde)?"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "config_entry": {
+      "message": "Error en configuración de Liebherr: {msg}"
+    },
+    "first_sse_timeout": {
+      "message": "No se recibió respuesta de la API de Liebherr a tiempo"
+    },
+    "sse_error": {
+      "message": "Error de conexión, no se puede reconectar despues de {attempt} intentos"
+    }
+  },
+  "entity": {
+    "select": {
+      "biofreshplus": {
+        "name": "BioFreshPlus",
+        "state": {
+          "zero_zero": "0/0",
+          "zero_minus_two": "0/-2",
+          "minus_two_minus_two": "-2/-2",
+          "minus_two_zero": "-2/0"
+        }
+      },
+      "icemaker": {
+        "name": "Máquina de Hielo{zone}",
+        "state": {
+          "ON": "Encendida",
+          "OFF": "Apagado",
+          "MAX_ICE": "HieloMax"
+        }
+      }
+    },
+    "number": {
+      "presentationlight": {
+        "name": "Presentation Light"
+      }
+    },
+    "switch": {
+      "supercool": {
+        "name": "SuperCool{zone}"
+      },
+      "superfrost": {
+        "name": "SuperFrost{zone}"
+      },
+      "partymode": {
+        "name": "Moda de fiesta"
+      },
+      "nightmode": {
+        "name": "Modo nocturno"
+      }
+    },
+    "light": {
+      "presentationlight": {
+        "name": "Luz de presentación"
+      }
+    },
+    "fan": {
+      "hydrobreeze": {
+        "name": "HydroBreeze"
+      }
+    },
+    "cover": {
+      "autodoor": {
+        "name": "AutoDoor{zone}"
+      }
+    },
+    "image": {
+      "device_image": {
+        "name": "Imagen del dispositivo"
+      }
+    },
+    "sensor": {
+      "updated": {
+        "name": "Última actualización"
+      }
+    },
+    "climate": {
+      "fridge": {
+        "name": "Nevera{zone}",
+        "state": {
+          "cool": "Enfriar"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Temperaturas habilitadas"
+          }
+        }
+      },
+      "freezer": {
+        "name": "Congelador{zone}",
+        "state": {
+          "cool": "Congelar"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Temperaturas habilitadas"
+          }
+        }
+      }
+    }
+  },
+  "common": {
+    "top": "Arriba",
+    "middle": "Medio",
+    "bottom": "Abajo"
+  }
+}

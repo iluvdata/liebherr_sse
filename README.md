@@ -1,0 +1,127 @@
+# Custom Liebherr Integration for Home Assistant
+
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=flat-square&logo=homeassistantcommunitystore)](https://hacs.xyz/)
+![GitHub Release](https://img.shields.io/github/v/release/iluvdata/liebherr)
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Filuvdata%2Fliebherr%2Frefs%2Fheads%2Fmain%2Fcustom_components%2Fliebherr%2Fmanifest.json&query=%24.version&prefix=v&label=dev-version&labelColor=orange)
+
+This is an *unofficial* **custom** integration for Home Assistant that allows you to connect and control Liebherr smart devices via the Liebherr SmartHomeAPI using the simple [pyliebherr](https://github.com/iluvdata/pyliebherr) library.
+
+> [!IMPORTANT]
+> There is a [Liebherr core integration](https://www.home-assistant.io/integrations/liebherr/) in Home Assistant as of 2026.3 authored by [@mettolon](https://github.com/mettolen).  If you want a very stable and fully tested integration I suggest using the core integration!
+
+> [!WARNING]
+> As of 2026.10.1 it has become necessary to migrate away from using the same `DOMAIN` as the core integration (`liebherr`).  This update will require a manual [migration](#migration-to-2026101) process.
+
+## Features
+
+- Uses Server-Sent Events to receive updates (Cloud Push)
+- Monitor current and target temperatures of your Liebherr refrigerators and freezers.
+- Control device features such as BioFreshPlus, Hydrobreeze, AutoDoor, Presentation Lights, and Ice Makers.
+
+## Installation
+
+### HACS (Recommended)
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=integration&owner=iluvdata&repository=liebherr)
+
+or search for the Liebherr integration in HACS
+
+### Manual Installation
+
+1. Download the latest release from the [GitHub Releases page](https://github.com/iluvdata/liebherr/releases).
+2. Extract the downloaded archive.
+3. Copy the `custom_components/liebherr` folder to your Home Assistant `custom_components` directory.
+   - Example: `/config/custom_components/liebherr`
+4. Restart Home Assistant.
+
+## Migration to 2026.10.1
+
+1. Remove the integration from Home Assistant: [![Open your Home Assistant instance and show an integration.](https://my.home-assistant.io/badges/integration.svg)](https://my.home-assistant.io/redirect/integration/?domain=liebherr)
+2. Redownload the repository in [HACS](#hacs-recommended).
+
+## Configuration
+
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=liebherr)
+
+### Or
+
+1. In Home Assistant, navigate to **Settings** > **Devices & Services**.
+2. Click **Add Integration**.
+3. Search for "Liebherr" and select it.
+
+### Then
+
+1. Enter your Liebherr HomeAPI API key. (see [Smart Device Home API](https://developer.liebherr.com/apis/smartdevice-homeapi/) to get a key)
+2. Complete the setup process.
+3. (Optional):  Configure the polling interval and the entity type for Presentation Light (see below).
+
+## Usage
+
+Once the integration is configured, your Liebherr devices will appear as entities in Home Assistant. You can:
+
+- Monitor temperatures and other metrics.
+- Control switches and settings via the Home Assistant UI or automatons.
+
+Controls and features will map to the following domains:
+
+| Liebherr Feature | Homeassistant Domain |
+| ----------------- | --------------------- |
+| Auto Door | Cover |
+| Ice Maker, BioFreshPlus | Select |
+| Presentation Light | Light or Number |
+| SuperCool, SuperFreeze, PartyMode, NightMode | Switch |
+| HydroBreeze | Fan |
+| Temperature<sup>1</sup> | Climate |
+| `image_url` (Device) | Image |
+| Bottle Timer | **Not available** |
+| Energy Monitors | **Not available** |
+| Holiday Mode | **Not available** |
+| Door Alarm | **Not available** |
+
+1. Some Liebherr models only allow temperature to be set to certain values (i.e. 3, 5, 7, 9 ℃). The integration will account for this and set the appropriate temperature steps as long as the steps are uniform (e.g. each temperature setting separated by 2°).  If steps are not uniform the integration will set the temperature to the nearest valid value.
+
+> [!Note]
+> All features available in the Liebherr SmartDevice API have been implemented as of 14 Oct 2026. Just because the feature exists in the Liebherr SmartDevice App does *not* mean it's available in the API.  Feature requests to implement app features not available in the API will be ignored.
+
+### Discover New Appliances
+
+Currently appliances added to your Liebherr account will not be automatically discovered. Once an appliance is connected to your Liebherr account (and accessible in the SmartHome app) manually reload the integration from the integration screen:
+
+[![Open your Home Assistant instance and show an integration.](https://my.home-assistant.io/badges/integration.svg)](https://my.home-assistant.io/redirect/integration/?domain=liebherr)
+
+and click on "Reload" on the configuration menu:
+
+![Menu Image](https://raw.githubusercontent.com/iluvdata/liebherr/refs/heads/main/assets/menu.png)
+
+## Troubleshooting
+
+- Ensure your Liebherr api key is correct.
+- Check the Home Assistant logs for any errors related to the integration.
+- Enable debug on the integration.
+- Download and inspect the integration diagnostics.
+
+This was tested on a Liebherr Device lacking:
+
+- AutoDoor (reported to be working)
+- Presentation Light (reported to be working both as number and light entity)  
+- BioFreshPlus (reported to be working)  
+- HydroBreeze (reported to be working)  
+- Stepped temperature settings
+
+If you encounter an issue with these features please submit an issue.
+
+## Acknowledgements
+
+This is a complete rewrite of the [custom integration](https://github.com/bhuebschen/liebherr) originally maintained by [@bhuebschen](https://github.com/bhuebschen) from a fork created by [@skatsavos](https://github.com/skatsavos).  The original integration stopped working in Oct 2025 and the original maintainer did not appear to be maintaining the project.
+
+## Support
+
+If you encounter any issues or have feature requests, please open an issue on the [GitHub Issues page](https://github.com/iluvdata/liebherr/issues).
+
+## Contributions
+
+Contributions are welcome! Feel free to submit pull requests to improve this integration.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/iluvdata/liebherr/blob/main/LICENSE) file for details.

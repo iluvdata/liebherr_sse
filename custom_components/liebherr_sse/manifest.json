@@ -1,0 +1,21 @@
+{
+  "domain": "liebherr_sse",
+  "name": "Liebherr Smart Device",
+  "codeowners": [
+    "@iluvdata"
+  ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/iluvdata/liebherr",
+  "integration_type": "service",
+  "iot_class": "cloud_push",
+  "issue_tracker": "https://github.com/iluvdata/liebherr/issues",
+  "loggers": [
+    "pyliebherr"
+  ],
+  "requirements": [
+    "pyliebherr==2026.10.1"
+  ],
+  "single_config_entry": true,
+  "version": "2026.10.1"
+}

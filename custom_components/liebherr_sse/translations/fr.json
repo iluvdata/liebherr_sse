@@ -1,0 +1,143 @@
+{
+  "title": "Liebherr",
+  "common": {
+    "top": "Haut",
+    "middle": "Milieu",
+    "bottom": "Bas"
+  },
+  "config": {
+    "step": {
+      "user": {
+        "description": "Connectez votre appareil au réseau Wi‑Fi de votre domicile via l'**application SmartDevice**.\n\n**1. [Téléchargez]({url_download_app}) l'application**\n**2. Suivez les [instructions]({url_connect_instructions}) pour connecter votre appareil**\n**3. Obtenez votre clé API via l'application SmartDevice**\n\nAllez dans *Paramètres* de l'application SmartDevice et sélectionnez **« Fonctionnalités bêta »**, puis activez HomeAPI.\n\nCopiez la clé API et collez-la ci‑dessous. La clé API ne peut être copiée **qu'une seule fois**.\n\nDès que vous quittez l'écran, le code **ne peut** plus être copié.\n\nSi vous avez oublié votre clé, vous devez en créer une nouvelle via l'application.",
+        "data": {
+          "api_key": "Clé API de l'application SmartDevice"
+        }
+      }
+    },
+     "error": {
+      "auth_error": "Clé API non autorisée ou invalide.",
+      "whitespace_api_key": "There is whitespace before or after the api key."
+    },
+
+    "abort": {
+      "already_configured": "Clé API déjà configurée",
+      "invalid_source": "Une source de flux invalide a été spécifiée, cela ne devrait jamais arriver (voir les logs)",
+      "reauth_successful": "Réauthentification réussie."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options Liebherr",
+        "sections": {
+          "presentation_light_options": {
+            "name": "Options d'éclairage de présentation",
+            "data": {
+              "presentation_light_as_number": "Utiliser une entité de type nombre (curseur) au lieu d'une entité lumière pour contrôler l'éclairage de présentation (si applicable)?"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "config_entry": {
+      "message": "Erreur lors de la configuration de Liebherr: {msg}"
+    },
+    "first_sse_timeout": {
+      "message": "Aucune réponse reçue de l'API Liebherr dans les délais"
+    },
+    "sse_error": {
+      "message": "API connection error, failed after {attempt} reattempts"
+    }
+  },
+  "entity": {
+    "select": {
+      "icemaker": {
+        "name": "Fabrique à glaçons{zone}",
+        "state": {
+          "on": "Activé",
+          "off": "Désactivé",
+          "max_ice": "MaxIce"
+        }
+      },
+      "biofreshplus": {
+        "name": "BioFreshPlus",
+        "state": {
+          "zero_zero": "0/0",
+          "zero_minus_two": "0/-2",
+          "minus_two_minus_two": "-2/-2",
+          "minus_two_zero": "-2/0"
+        }
+      }
+    },
+    "number": {
+      "presentationlight": {
+        "name": "Éclairage de présentation"
+      }
+    },
+    "switch": {
+      "supercool": {
+        "name": "SuperCool{zone}"
+      },
+      "superfrost": {
+        "name": "SuperFrost{zone}"
+      },
+      "partymode": {
+        "name": "Mode fête"
+      },
+      "nightmode": {
+        "name": "Mode nuit"
+      }
+    },
+    "light": {
+      "presentationlight": {
+        "name": "Éclairage de présentation"
+      }
+    },
+    "fan": {
+      "hydrobreeze": {
+        "name": "HydroBreeze"
+      }
+    },
+    "cover": {
+      "autodoor": {
+        "name": "AutoDoor{zone}"
+      }
+    },
+    "image": {
+      "device_image": {
+        "name": "Image de l'appareil"
+      }
+    },
+    "climate": {
+      "fridge": {
+        "name": "Réfrigérateur{zone}",
+        "state": {
+          "cool": "Refroidissement"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Étapes de température activées"
+          }
+        }
+      },
+      "freezer": {
+        "name": "Congélateur{zone}",
+        "state": {
+          "cool": "Congélation"
+        },
+        "state_attributes": {
+          "enabled_temperature_steps": {
+            "name": "Étapes de température activées"
+          }
+        }
+      }
+    },
+    "sensor": {
+      "updated": {
+        "name": "Dernière actualisation"
+      }
+    }
+  }
+}
