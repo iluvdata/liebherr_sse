@@ -49,7 +49,9 @@ PLATFORMS = {
 }
 
 
-async def async_setup_entry(hass: HomeAssistant, config_entry: LiebherrConfigEntry):
+async def async_setup_entry(
+    hass: HomeAssistant, config_entry: LiebherrConfigEntry
+) -> None:
     """Set up Liebherr devices from a config entry."""
 
     try:

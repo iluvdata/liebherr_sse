@@ -1,18 +1,18 @@
 {
   "domain": "liebherr_sse",
   "name": "Liebherr Smart Device",
-  "codeowners": [
-    "@iluvdata"
-  ],
   "categories": [
     "appliances_cleaning"
   ],
+  "codeowners": [
+    "@iluvdata"
+  ],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/iluvdata/liebherr",
+  "documentation": "https://github.com/iluvdata/liebherr_sse",
   "integration_type": "service",
   "iot_class": "cloud_push",
-  "issue_tracker": "https://github.com/iluvdata/liebherr/issues",
+  "issue_tracker": "https://github.com/iluvdata/liebherr_sse/issues",
   "loggers": [
     "pyliebherr"
   ],
@@ -20,5 +20,5 @@
     "pyliebherr==2026.10.1"
   ],
   "single_config_entry": true,
-  "version": "2026.10.1"
+  "version": "2026.11.0"
 }

@@ -5,9 +5,9 @@ import logging
 import re
 from typing import Any
 
+import probatio
 from pyliebherr import LiebherrAPI
 from pyliebherr.exception import LiebherrAuthException
-import probatio
 
 from homeassistant.config_entries import (
     SOURCE_REAUTH,
@@ -19,10 +19,11 @@ from homeassistant.config_entries import (
 from homeassistant.const import CONF_API_KEY
 from homeassistant.core import callback
 from homeassistant.data_entry_flow import section
-from homeassistant.helpers.selector import BooleanSelector, TextSelector
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.helpers.selector import BooleanSelector, TextSelector
+from homeassistant.loader import async_get_custom_components
 
-from . import LiebherrConfigEntry
+from . import LiebherrConfigEntry, LiebherrRuntimeData
 from .const import (
     CONF_PRESENTATION_LIGHT_AS_NUMBER,
     DOMAIN,
@@ -83,16 +84,22 @@ class OptionsFlowHandler(OptionsFlowWithReload):
 class LiebherrConfigFlow(ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Liebherr Integration."""
 
-    VERSION = 1
-
-    MINOR_VERSION = 4
-
     async def async_step_user(
         self, user_input: dict[str, str] | None = None
     ) -> ConfigFlowResult:
         """Handle the initial step."""
+        if user_input is None:
+            custom_components = await async_get_custom_components(self.hass)
+            if custom_components.get("liebherr"):
+                # the legacy custom lieberr compoent is install
+                for config_entry in self.hass.config_entries.async_entries("liebherr"):
+                    # it's the custom integration
+                    if isinstance(config_entry.runtime_data, LiebherrRuntimeData):
+                        user_input = {CONF_API_KEY: config_entry.data[CONF_API_KEY]}
+                        await self.hass.config_entries.async_remove(
+                            config_entry.entry_id
+                        )
         errors = {}
-
         if user_input is not None:
             # check the API key
             if not re.fullmatch("^\\S.*\\S$", user_input[CONF_API_KEY]):

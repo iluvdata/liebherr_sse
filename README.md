@@ -1,8 +1,7 @@
-# Custom Liebherr Integration for Home Assistant
+# Liebherr Smart Device Custom Integration
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=flat-square&logo=homeassistantcommunitystore)](https://hacs.xyz/)
-![GitHub Release](https://img.shields.io/github/v/release/iluvdata/liebherr)
-![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Filuvdata%2Fliebherr%2Frefs%2Fheads%2Fmain%2Fcustom_components%2Fliebherr%2Fmanifest.json&query=%24.version&prefix=v&label=dev-version&labelColor=orange)
+![GitHub Release](https://img.shields.io/github/v/release/iluvdata/liebherr_sse)
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Filuvdata%2Fliebherr%2Frefs%2Fheads%2Fmain%2Fcustom_components%2Fliebherr_sse%2Fmanifest.json&query=%24.version&prefix=v&label=dev-version&labelColor=orange)
 
 This is an *unofficial* **custom** integration for Home Assistant that allows you to connect and control Liebherr smart devices via the Liebherr SmartHomeAPI using the simple [pyliebherr](https://github.com/iluvdata/pyliebherr) library.
 
@@ -10,7 +9,7 @@ This is an *unofficial* **custom** integration for Home Assistant that allows yo
 > There is a [Liebherr core integration](https://www.home-assistant.io/integrations/liebherr/) in Home Assistant as of 2026.3 authored by [@mettolon](https://github.com/mettolen).  If you want a very stable and fully tested integration I suggest using the core integration!
 
 > [!WARNING]
-> As of 2026.10.1 it has become necessary to migrate away from using the same `DOMAIN` as the core integration (`liebherr`).  This update will require a manual [migration](#migration-to-2026101) process.
+> As of 2026.11.1 it has become necessary to migrate away from using the same `DOMAIN` as the core integration (`liebherr`).  If you are updating from the `liebherr` custom integration you must follow the [migration instructions](/iluvdata/liebherr_sse/blob/main/MIGRATION.md).
 
 ## Features
 
@@ -20,24 +19,11 @@ This is an *unofficial* **custom** integration for Home Assistant that allows yo
 
 ## Installation
 
-### HACS (Recommended)
+### Marketplace (Recommended)
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=integration&owner=iluvdata&repository=liebherr)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=integration&owner=iluvdata&repository=liebherr_sse)
 
-or search for the Liebherr integration in HACS
-
-### Manual Installation
-
-1. Download the latest release from the [GitHub Releases page](https://github.com/iluvdata/liebherr/releases).
-2. Extract the downloaded archive.
-3. Copy the `custom_components/liebherr` folder to your Home Assistant `custom_components` directory.
-   - Example: `/config/custom_components/liebherr`
-4. Restart Home Assistant.
-
-## Migration to 2026.10.1
-
-1. Remove the integration from Home Assistant: [![Open your Home Assistant instance and show an integration.](https://my.home-assistant.io/badges/integration.svg)](https://my.home-assistant.io/redirect/integration/?domain=liebherr)
-2. Redownload the repository in [HACS](#hacs-recommended).
+or search for the Liebherr Smart Device integration in Marketplace.
 
 ## Configuration
 
@@ -81,7 +67,7 @@ Controls and features will map to the following domains:
 1. Some Liebherr models only allow temperature to be set to certain values (i.e. 3, 5, 7, 9 ℃). The integration will account for this and set the appropriate temperature steps as long as the steps are uniform (e.g. each temperature setting separated by 2°).  If steps are not uniform the integration will set the temperature to the nearest valid value.
 
 > [!Note]
-> All features available in the Liebherr SmartDevice API have been implemented as of 14 Oct 2026. Just because the feature exists in the Liebherr SmartDevice App does *not* mean it's available in the API.  Feature requests to implement app features not available in the API will be ignored.
+> All features available in the Liebherr SmartDevice API have been implemented as of 10 November 2026. Just because the feature exists in the Liebherr SmartDevice App does *not* mean it's available in the API.  Feature requests to implement app features not available in the API will be ignored.
 
 ### Discover New Appliances
 
@@ -110,13 +96,10 @@ This was tested on a Liebherr Device lacking:
 
 If you encounter an issue with these features please submit an issue.
 
-## Acknowledgements
-
-This is a complete rewrite of the [custom integration](https://github.com/bhuebschen/liebherr) originally maintained by [@bhuebschen](https://github.com/bhuebschen) from a fork created by [@skatsavos](https://github.com/skatsavos).  The original integration stopped working in Oct 2025 and the original maintainer did not appear to be maintaining the project.
 
 ## Support
 
-If you encounter any issues or have feature requests, please open an issue on the [GitHub Issues page](https://github.com/iluvdata/liebherr/issues).
+If you encounter any issues or have feature requests, please open an issue on the [GitHub Issues page](https://github.com/iluvdata/liebher_sse_/issues).
 
 ## Contributions
 
