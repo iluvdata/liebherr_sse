@@ -1,7 +1,7 @@
 # Liebherr Smart Device Custom Integration
 
 ![GitHub Release](https://img.shields.io/github/v/release/iluvdata/liebherr_sse)
-![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Filuvdata%2Fliebherr%2Frefs%2Fheads%2Fmain%2Fcustom_components%2Fliebherr_sse%2Fmanifest.json&query=%24.version&prefix=v&label=dev-version&labelColor=orange)
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Filuvdata%2Fliebherr_sse%2Frefs%2Fheads%2Fmain%2Fcustom_components%2Fliebherr_sse%2Fmanifest.json&query=%24.version&label=dev-version)
 
 This is an *unofficial* **custom** integration for Home Assistant that allows you to connect and control Liebherr smart devices via the Liebherr SmartHomeAPI using the simple [pyliebherr](https://github.com/iluvdata/pyliebherr) library.
 
@@ -9,7 +9,7 @@ This is an *unofficial* **custom** integration for Home Assistant that allows yo
 > There is a [Liebherr core integration](https://www.home-assistant.io/integrations/liebherr/) in Home Assistant as of 2026.3 authored by [@mettolon](https://github.com/mettolen).  If you want a very stable and fully tested integration I suggest using the core integration!
 
 > [!WARNING]
-> As of 2026.11.1 it has become necessary to migrate away from using the same `DOMAIN` as the core integration (`liebherr`).  If you are updating from the `liebherr` custom integration you must follow the [migration instructions](/iluvdata/liebherr_sse/blob/main/MIGRATION.md).
+> As of 2026.11.0 it has become necessary to migrate away from using the same `DOMAIN` as the core integration (`liebherr`).  If you are updating from the `liebherr` custom integration you must follow the [migration instructions](https://github.com/iluvdata/liebherr_sse/blob/main/MIGRATION.md).
 
 ## Features
 
@@ -95,7 +95,6 @@ This was tested on a Liebherr Device lacking:
 - Stepped temperature settings
 
 If you encounter an issue with these features please submit an issue.
-
 
 ## Support
 
