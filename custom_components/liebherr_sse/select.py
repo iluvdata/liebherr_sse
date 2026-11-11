@@ -55,7 +55,7 @@ class LiebherrSelect(LiebherrEntity, SelectEntity):
             _LOGGER.error(
                 "Failed to set option '%s' for '%s': %s",
                 data,
-                self.coordinator.device.device_id,
+                self.device.device_id,
                 e,
             )
 

@@ -104,7 +104,9 @@ class LiebherrConfigFlow(ConfigFlow, domain=DOMAIN):
                 # the legacy custom lieberr component is installed
                 from custom_components.liebherr import LiebherrRuntimeData  # noqa: PLC0415
 
-                for config_entry in self.hass.config_entries.async_entries("liebherr"):
+                for config_entry in self.hass.config_entries.async_entries(
+                    "liebherr", include_disabled=False, include_ignore=False
+                ):
                     # confirm that is custom integration
                     if isinstance(config_entry.runtime_data, LiebherrRuntimeData):
                         self._data = {
