@@ -114,7 +114,7 @@
     },
     "climate": {
       "fridge": {
-        "name": "Refridgerator{zone}",
+        "name": "Refrigerator{zone}",
         "state": {
           "cool": "Chill"
         },
