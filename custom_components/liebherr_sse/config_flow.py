@@ -21,7 +21,6 @@ from homeassistant.core import callback
 from homeassistant.data_entry_flow import section
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.selector import BooleanSelector, TextSelector
-import homeassistant.helpers.issue_registry as ir
 from homeassistant.loader import async_get_custom_components
 
 from . import LiebherrConfigEntry
@@ -85,9 +84,15 @@ class OptionsFlowHandler(OptionsFlowWithReload):
 class LiebherrConfigFlow(ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Liebherr Integration."""
 
-    async def async_on_create_entry(self, result: ConfigFlowResult) -> ConfigFlowResult:
-        """Remove the deprecation issue if present."""
-        ir.async_delete_issue("liebherr", "deprecated_integration")
+    _data: dict[str, str] | None = None
+
+    async def async_step_confirm(
+        self, user_input: dict[str, str] | None = None
+    ) -> ConfigFlowResult:
+        """Confirm replacement of prior config flow."""
+        if user_input is not None:
+            return await self.async_step_user({CONF_API_KEY: self._data[CONF_API_KEY]})
+        return self.async_show_form(step_id="confirm")
 
     async def async_step_user(
         self, user_input: dict[str, str] | None = None
@@ -96,16 +101,18 @@ class LiebherrConfigFlow(ConfigFlow, domain=DOMAIN):
         if user_input is None:
             custom_components = await async_get_custom_components(self.hass)
             if custom_components.get("liebherr") is not None:
-                # the legacy custom lieberr compoent is install
-                for config_entry in self.hass.config_entries.async_entries("liebherr"):
-                    # it's the custom integration
-                    from custom_components.liebherr import LiebherrRuntimeData  # noqa: PLC0415
+                # the legacy custom lieberr component is installed
+                from custom_components.liebherr import LiebherrRuntimeData  # noqa: PLC0415
 
+                for config_entry in self.hass.config_entries.async_entries("liebherr"):
+                    # confirm that is custom integration
                     if isinstance(config_entry.runtime_data, LiebherrRuntimeData):
-                        user_input = {CONF_API_KEY: config_entry.data[CONF_API_KEY]}
-                        await self.hass.config_entries.async_remove(
-                            config_entry.entry_id
-                        )
+                        self._data = {
+                            CONF_API_KEY: config_entry.data[CONF_API_KEY],
+                            "entry_id": config_entry.entry_id,
+                        }
+                        return await self.async_step_confirm()
+
         errors = {}
         if user_input is not None:
             # check the API key
@@ -123,6 +130,8 @@ class LiebherrConfigFlow(ConfigFlow, domain=DOMAIN):
                     if hasattr(self, "api"):
                         await api.async_close()
             if not errors:
+                if self._data is not None:
+                    await self.hass.config_entries.async_remove(self._data["entry_id"])
                 await self.async_set_unique_id(f"{DOMAIN}_{user_input[CONF_API_KEY]}")
                 self._abort_if_unique_id_configured()
                 if self.source == SOURCE_USER:

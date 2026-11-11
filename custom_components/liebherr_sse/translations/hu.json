@@ -12,6 +12,9 @@
         "data": {
           "api_key": "API Key a SmartDevice App-ból"
         }
+      },
+      "confirm": {
+        "description": "> [!CAUTION]\n> Ha folytatja, a meglévő Liebherr integráció teljesen eltávolításra kerül. Ez eltávolítja az összes meglévő entitást és beállítást.\n\nBiztosan folytatni szeretné?"
       }
     },
     "error": {

@@ -12,6 +12,9 @@
         "data": {
           "api_key": "Clé API de l'application SmartDevice"
         }
+      },
+      "confirm": {
+        "description": "> [!CAUTION]\n> Si vous continuez, l'intégration Liebherr existante sera complètement supprimée. Cela supprimera toutes les entités et les paramètres existants.\n\nÊtes-vous sûr de vouloir continuer ?"
       }
     },
      "error": {

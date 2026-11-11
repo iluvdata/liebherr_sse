@@ -6,11 +6,22 @@ Overriding a core's integration using the same `DOMAIN` in Home Assistant is dis
 
 ## Migration Steps
 
+> [!WARNING]
+>
+> This migration removes the prior entry, device and all entities.  They will be recreated in the configuration flow. Given that home assistant now allows you to configure [entity id schemes](http://home-assistant.io/docs/configuration/customizing-entities) the new entities might have different names that the prior entities.
+
 1. Install  `liebherr_sse`:
+   
     [![Open your Home Assistant instance and open a repository in the Marketplace.](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=iluvdata&repository=liebherr_sse)
 2. Configure the `liebherr_sse` integration:
-[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=liebherr_sse)
+
+   [![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=liebherr_sse)
    1. This will import the API Key and some of the configuration options from the current integration.
    2. It will remove the legacy `liebherr` config entry if the new `liebherr_sse` configuration is successful.
-1. (Optional) Uninstall the `liebherr` custom integration
+3. (Optional) Uninstall the `liebherr` custom integration in Marketplace/HACS:
+   
    [![Open your Home Assistant instance and open a repository in the Marketplace.](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=iluvdata&repository=liebherr)
+4. Review the new entities for name changes that may include **breaking changes** to Automations and Dashboards.
+   
+   [![Open your Home Assistant instance and show your entities.](https://my.home-assistant.io/badges/entities.svg)](https://my.home-assistant.io/redirect/entities/?domain=liebherr_sse&group=device)
+

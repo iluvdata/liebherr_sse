@@ -12,6 +12,9 @@
         "data": {
           "api_key": "Chiave HomeAPI dall'app SmartDevice"
         }
+      },
+      "confirm": {
+        "description": "> [!CAUTION]\n> Continuando, l'integrazione Liebherr esistente verrà completamente rimossa. Questo rimuoverà tutte le entità e le impostazioni esistenti.\n\nSei sicuro di voler continuare?"
       }
     },
     "error": {

@@ -7,6 +7,9 @@
         "data": {
           "api_key": "Clavo API a través de la aplicación SmartDevice."
         }
+      },
+      "confirm": {
+        "description": "> [!CAUTION]\n> Si continúas, se eliminará por completo la integración de Liebherr existente. Esto eliminará todas las entidades y configuraciones existentes.\n\n¿Seguro que quieres continuar?"
       }
     },
     "error": {

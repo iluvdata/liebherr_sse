@@ -12,6 +12,9 @@
         "data": {
           "api_key": "API Key from the SmartDevice App"
         }
+      },
+      "confirm": {
+        "description": "> [!CAUTION]\n> Continuing will completely remove the existing Liebherr integration. This will remove all existing entities and settings.\n\nAre you sure you want to continue?"
       }
     },
     "error": {
