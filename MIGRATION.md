@@ -13,13 +13,19 @@ Overriding a core's integration using the same `DOMAIN` in Home Assistant is dis
 1. Upgrade or uninstall the custom `liebherr` integration.  If migrating directly from the `liebherr` respository you must be using version  `2026.11.0`.
    
    [![Open your Home Assistant instance and open a repository in the Marketplace.](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=iluvdata&repository=liebherr)
+
+   > [!important]
+   > If upgrading be sure to restart Home Assistant to ensure the underlying `pyliebherr` is also updated.
 2. Install  `liebherr_sse`:
    
     [![Open your Home Assistant instance and open a repository in the Marketplace.](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=iluvdata&repository=liebherr_sse)
+
+   > [!important]
+   > Home Assistant must be restarted after installing.
 3. Configure the `liebherr_sse` integration:
 
    [![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=liebherr_sse)
-   1. This will import the API Key and some of the configuration options from the current integration.
+   1. This will import the API Key and some of the configuration options from the current integration (if still present).
    2. It will remove the legacy `liebherr` config entry if the new `liebherr_sse` configuration is successful.
 4. (Optional) Uninstall the `liebherr` custom integration in Marketplace/HACS:
    
