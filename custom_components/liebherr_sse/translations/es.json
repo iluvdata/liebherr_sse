@@ -1,5 +1,5 @@
 {
-  "title": "Liebherr Smart Device",
+  "title": "Liebherr",
   "config": {
     "step": {
       "user": {
@@ -7,9 +7,6 @@
         "data": {
           "api_key": "Clavo API a través de la aplicación SmartDevice."
         }
-      },
-      "confirm": {
-        "description": "> [!CAUTION]\n> Si continúas, se eliminará por completo la integración de Liebherr existente. Esto eliminará todas las entidades y configuraciones existentes.\n\n¿Seguro que quieres continuar?"
       }
     },
     "error": {
@@ -141,5 +138,12 @@
     "top": "Arriba",
     "middle": "Medio",
     "bottom": "Abajo"
+  },
+  "issues": {
+    "deprecated_integration": {
+      "title": "iluvdata/liebherr está obsoleto, usa la integración principal en su lugar",
+      "short_title": "iluvdata/liebherr está obsoleto",
+      "description": "La integración personalizada de Liebherr está obsoleta porque la integración principal ya admite la misma funcionalidad. Elimina la integración personalizada y usa la integración principal en su lugar."
+    }
   }
 }

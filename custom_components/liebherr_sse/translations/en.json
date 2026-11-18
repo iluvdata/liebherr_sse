@@ -1,5 +1,5 @@
 {
-  "title": "Liebherr Smart Device",
+  "title": "Liebherr",
   "common": {
     "top": "Upper",
     "middle": "Middle",
@@ -12,9 +12,6 @@
         "data": {
           "api_key": "API Key from the SmartDevice App"
         }
-      },
-      "confirm": {
-        "description": "> [!CAUTION]\n> Continuing will completely remove the existing Liebherr integration. This will remove all existing entities and settings.\n\nAre you sure you want to continue?"
       }
     },
     "error": {
@@ -114,7 +111,7 @@
     },
     "climate": {
       "fridge": {
-        "name": "Refrigerator{zone}",
+        "name": "Refridgerator{zone}",
         "state": {
           "cool": "Chill"
         },
@@ -140,6 +137,13 @@
       "updated": {
         "name": "Last Updated"
       }
+    }
+  },
+  "issues": {
+    "deprecated_integration": {
+      "title": "iluvdata/liebherr is deprecated, use the core integration instead",
+      "short_title": "iluvdata/liebherr is deprecated",
+      "description": "The Liebherr custom integration has been deprecated as the core integration now supports the same functionality. Please remove the custom integration and use the core integration instead."
     }
   }
 }

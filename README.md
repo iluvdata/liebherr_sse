@@ -1,3 +1,7 @@
+# 🚨 This repository is no longer under development 🚨
+
+The [Liebherr core integration](https://www.home-assistant.io/integrations/liebherr/) fully supports all the features of this custom integration and recommended.
+
 # Liebherr Smart Device Custom Integration
 
 ![GitHub Release](https://img.shields.io/github/v/release/iluvdata/liebherr_sse)

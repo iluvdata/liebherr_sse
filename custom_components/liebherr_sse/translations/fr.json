@@ -1,5 +1,5 @@
 {
-  "title": "Liebherr Smart Device",
+  "title": "Liebherr",
   "common": {
     "top": "Haut",
     "middle": "Milieu",
@@ -12,9 +12,6 @@
         "data": {
           "api_key": "Clé API de l'application SmartDevice"
         }
-      },
-      "confirm": {
-        "description": "> [!CAUTION]\n> Si vous continuez, l'intégration Liebherr existante sera complètement supprimée. Cela supprimera toutes les entités et les paramètres existants.\n\nÊtes-vous sûr de vouloir continuer ?"
       }
     },
      "error": {
@@ -141,6 +138,13 @@
       "updated": {
         "name": "Dernière actualisation"
       }
+    }
+  },
+  "issues": {
+    "deprecated_integration": {
+      "title": "iluvdata/liebherr est obsolète, utilisez l'intégration intégrée à la place",
+      "short_title": "iluvdata/liebherr est obsolète",
+      "description": "L'intégration personnalisée Liebherr est obsolète, car l'intégration intégrée prend désormais en charge la même fonctionnalité. Veuillez supprimer l'intégration personnalisée et utiliser l'intégration intégrée à la place."
     }
   }
 }
